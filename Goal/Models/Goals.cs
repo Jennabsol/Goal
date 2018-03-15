@@ -16,7 +16,7 @@ namespace Goal.Models
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "What is you current status in relation to your goal?")]
+        [Display(Name = "What is your current status in relation to your goal?")]
         public string BeginningState { get; set; }
 
 

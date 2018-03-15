@@ -22,7 +22,7 @@ namespace Goal.Models
         public string Challenges { get; set; }
 
         [Required]
-        [Display(Name = "What is you current status in relation to your goal?")]
+        [Display(Name = "What is your current status in relation to your goal?")]
         public string EndState { get; set; }
 
         public int GoalId { get; set; }
