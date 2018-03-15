@@ -17,6 +17,10 @@ namespace Goal.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Goals>()
+              .Property(b => b.DateCreated)
+              .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
+
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
