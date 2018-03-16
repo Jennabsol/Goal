@@ -27,21 +27,21 @@ namespace Goal.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Goals>()
-              .Property(b => b.DateCreated)
-              .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
+            //builder.Entity<Goals>()
+            //  .Property(b => b.DateCreated)
+            //  .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
 
-            builder.Entity<DailySprints>()
-              .Property(b => b.DateCreated)
-              .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
+            //builder.Entity<DailySprints>()
+            //  .Property(b => b.DateCreated)
+            //  .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
 
-            builder.Entity<Retrospective>()
-              .Property(b => b.DateCreated)
-              .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
+            //builder.Entity<Retrospective>()
+            //  .Property(b => b.DateCreated)
+            //  .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
 
-            builder.Entity<SprintGroup>()
-              .Property(b => b.DateCreated)
-              .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
+            //builder.Entity<SprintGroup>()
+            //  .Property(b => b.DateCreated)
+            //  .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
 
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
