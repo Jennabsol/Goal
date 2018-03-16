@@ -25,7 +25,7 @@ namespace Goal.Models
         [Display(Name = "What is your current status in relation to your goal?")]
         public string EndState { get; set; }
 
-        public int GoalId { get; set; }
-        public Goals Goal { get; set; }
+        public int SprintGroupId { get; set; }
+        public SprintGroup SprintGroup { get; set; }
     }
 }

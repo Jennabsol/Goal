@@ -22,8 +22,17 @@ namespace Goal.Models
 
         public DateTime DateCreated { get; set; }
 
+        public bool Completed { get; set; }
+
+        public Goals()
+        {
+            Completed = false;
+        }
+
         [Required]
         public ApplicationUser User { get; set; }
+
+        public virtual ICollection<GoalSprintGroup> GoalSprintGroup { get; set; }
 
     }
 }

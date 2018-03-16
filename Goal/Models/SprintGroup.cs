@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace Goal.Models
 {
-    public class Tips
+    public class SprintGroup
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Tip to help goal!")]
         public string Name { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public bool Completed { get; set; }
+
+        public SprintGroup()
+        {
+            Completed = false;
+        }
+
+        public virtual ICollection<GoalSprintGroup> GoalSprintGroup { get; set; }
     }
 }

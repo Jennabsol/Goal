@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Goal.Models
 {
-    public class GoalTips
+    public class GoalSprintGroup
     {
         [Key]
         public int Id { get; set; }
 
-        public int GoalId { get; set; }
+        public int GoalsId { get; set; }
         public Goals Goal { get; set; }
 
-        public int TipId { get; set; }
-        public Tips Tip { get; set; }
+        public int SprintGroupId { get; set; }
+        public SprintGroup SprintGroup { get; set; }
     }
 }

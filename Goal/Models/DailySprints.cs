@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Goal.Models
 {
-    public class Tasks
+    public class DailySprints
     {
         [Key]
         public int Id { get; set; }
@@ -21,7 +21,7 @@ namespace Goal.Models
         [Display(Name = "What are your thoughts?")]
         public string Notes { get; set; }
 
-        public int GoalId { get; set; }
-        public Goals Goal { get; set; }
+        public int SprintGroupId { get; set; }
+        public SprintGroup SprintGroup { get; set; }
     }
 }
