@@ -112,7 +112,8 @@ namespace Goal.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("User");
+            goals.User = await GetCurrentUserAsync();
             if (ModelState.IsValid)
             {
                 try
