@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Goal.Data;
 using Goal.Models;
 using Microsoft.AspNetCore.Identity;
+using Goal.Models.DailySprintViewModels;
 
 namespace Goal.Controllers
 {
@@ -26,10 +27,34 @@ namespace Goal.Controllers
 
         //id is SprintGroupId used to add a new dailySprint to a sprint group. 
         // GET: DailySprints
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var applicationDbContext = _context.DailySprints.Include(d => d.SprintGroup);
-            return View(await applicationDbContext.ToListAsync());
+
+            ListDailySprintViewModel viewModel = new ListDailySprintViewModel();
+
+            var dailySprint = await (
+               from d in _context.DailySprints
+               from sg in _context.SprintGroup
+               where d.SprintGroupId == sg.Id
+               && sg.Id == id
+               select d)
+               .OrderByDescending(d => d.DateCreated)
+               .ToListAsync();
+
+            var sprintGroup = await _context.SprintGroup.SingleAsync(sg => sg.Id == id);
+
+            if (dailySprint.Count < 1)
+            {
+
+                return RedirectToAction("Create", new { id = id });
+            }
+
+            viewModel.DailySprints = dailySprint;
+            viewModel.SprintGroup = sprintGroup;
+
+            return View(viewModel);
+            //var applicationDbContext = _context.DailySprints.Include(d => d.SprintGroup);
+            //return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: DailySprints/Details/5
@@ -50,12 +75,17 @@ namespace Goal.Controllers
 
             return View(dailySprints);
         }
-
+        // id is SprintGroupId
         // GET: DailySprints/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name");
-            return View();
+            var createDay = new DailySprints();
+
+            createDay.SprintGroupId = id;
+
+            return View(createDay);
+            //ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name");
+            //return View();
         }
 
         // POST: DailySprints/Create
@@ -63,16 +93,46 @@ namespace Goal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DateCreated,CurrentState,Notes,SprintGroupId")] DailySprints dailySprints)
+        public async Task<IActionResult> Create(CreateDailySprintViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(dailySprints);
+               
+
+                viewModel.DailySprints = new DailySprints();
+
+
+                //sets date created to current date
+                viewModel.DailySprints.DateCreated = DateTime.Now;
+                //passes the sprint group Id to the daily sprint
+                viewModel.DailySprints.SprintGroupId = viewModel.SprintGroupId;
+        
+                //adds new dailysprint to db
+                _context.Add(viewModel.DailySprints);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+
+                var goalSprintGroup = await (
+                    from gsg in _context.GoalSprintGroup
+                    where gsg.SprintGroupId == viewModel.SprintGroupId
+                    select gsg)
+                    .ToListAsync();
+
+
+                var gs = goalSprintGroup.First();
+
+                return RedirectToAction("Index", "SprintGroups", new { id = gs.SprintGroupId });
             }
-            ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name", dailySprints.SprintGroupId);
-            return View(dailySprints);
+            ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name", viewModel.DailySprints.SprintGroupId);
+            return View(viewModel);
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(dailySprints);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name", dailySprints.SprintGroupId);
+            //return View(dailySprints);
         }
 
         // GET: DailySprints/Edit/5
@@ -135,7 +195,7 @@ namespace Goal.Controllers
             {
                 return NotFound();
             }
-
+             
             var dailySprints = await _context.DailySprints
                 .Include(d => d.SprintGroup)
                 .SingleOrDefaultAsync(m => m.Id == id);
@@ -143,19 +203,42 @@ namespace Goal.Controllers
             {
                 return NotFound();
             }
+            //creates a new instance of DeleteDailySprintViewModel model, that contains a sprintGroup and goal ID
+            DeleteDailySprintViewModel viewModel = new DeleteDailySprintViewModel();
 
-            return View(dailySprints);
+            //grabs goal by dipping into Goalsprintgroup join table
+            var goalSprintGroup = await (
+                   from gsg in _context.GoalSprintGroup
+                   where gsg.SprintGroupId == dailySprints.SprintGroupId
+                   select gsg)
+                   .ToListAsync();
+
+            //grabs first return
+            var gs = goalSprintGroup.First();
+
+            viewModel.DailySprints = dailySprints;
+            viewModel.SprintGroupId = gs.SprintGroupId;
+
+            return View(viewModel);
+
+
+            //return View(dailySprints);
+
         }
 
         // POST: DailySprints/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int SprintGroupId)
         {
             var dailySprints = await _context.DailySprints.SingleOrDefaultAsync(m => m.Id == id);
             _context.DailySprints.Remove(dailySprints);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            
+
+            return RedirectToAction("Index", "SprintGroups", new { id = SprintGroupId });
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool DailySprintsExists(int id)
