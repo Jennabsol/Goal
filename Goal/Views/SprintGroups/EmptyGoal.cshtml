@@ -1,0 +1,15 @@
+﻿@model Goal.Models.SprintGroupViewModels.EmptyGoalsViewModel
+@{
+    ViewData["Title"] = "EmptyGoal";
+}
+
+<h2>EmptyGoal</h2>
+
+<h2 class="text-center page_header"></h2>
+
+<p class="text-center page_info projects_info">Goal has not started!</p>
+<p class="text-center page_info projects_info">Click the button below to add a sprint! </p>
+<p class="text-center">
+    <a class="btn btn-lg btn-default" asp-action="Create" asp-route-id="@Model.GoalsId">Start a Sprint</a>
+    <a class="btn btn-lg btn-default" asp-controller="Goals" asp-action="Index">Back To Goals</a>
+</p>

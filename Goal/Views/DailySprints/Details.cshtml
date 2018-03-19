@@ -1,0 +1,42 @@
+﻿@model Goal.Models.DailySprints
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DailySprints</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentState)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentState)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SprintGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SprintGroup.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
