@@ -1,0 +1,20 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "ignore": [
+    "/.*",
+    "_config.yml",
+    "CNAME",
+    "composer.json",
+    "CONTRIBUTING.md",
+    "docs",
+    "js/tests",
+    "test-infra"
+  ],
+  "dependencies": {
+    "bootstrap": "4.0.0",
+    "popper.js": "1.14.1",
+    "jquery": "3.3.1"
+  }
+
+}

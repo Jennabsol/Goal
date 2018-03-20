@@ -79,11 +79,13 @@ namespace Goal.Controllers
         // GET: DailySprints/Create
         public IActionResult Create(int id)
         {
-            var createDay = new DailySprints();
+            CreateDailySprintViewModel viewModel = new CreateDailySprintViewModel();
+           
 
-            createDay.SprintGroupId = id;
+            viewModel.SprintGroupId = id;
+            viewModel.DailySprints = new DailySprints();
 
-            return View(createDay);
+            return View(viewModel);
             //ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name");
             //return View();
         }
@@ -95,15 +97,16 @@ namespace Goal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateDailySprintViewModel viewModel)
         {
+            viewModel.DailySprints.DateCreated = DateTime.Now;
             if (ModelState.IsValid)
             {
                
 
-                viewModel.DailySprints = new DailySprints();
+                //viewModel.DailySprints = new DailySprints();
 
 
                 //sets date created to current date
-                viewModel.DailySprints.DateCreated = DateTime.Now;
+                
                 //passes the sprint group Id to the daily sprint
                 viewModel.DailySprints.SprintGroupId = viewModel.SprintGroupId;
         

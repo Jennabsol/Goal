@@ -5,8 +5,19 @@
     <UserSecretsId>aspnet-Goal-3B88DC5A-300C-4C0C-BC95-5FC2FC7FDFF3</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove=".bowerrc" />
+  </ItemGroup>
 
   <ItemGroup>
+    <Content Include=".bowerrc">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />

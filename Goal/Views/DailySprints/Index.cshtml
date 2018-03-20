@@ -1,53 +1,58 @@
-﻿@model IEnumerable<Goal.Models.DailySprints>
+﻿@model Goal.Models.DailySprintViewModels.ListDailySprintViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>@Model.SprintGroup.Name</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        @foreach (var day in Model.DailySprints)
+        {
+            <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DateCreated)
+                    @Html.DisplayNameFor(model => day.DateCreated)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CurrentState)
+                    @Html.DisplayNameFor(model => day.CurrentState)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Notes)
+                    @Html.DisplayNameFor(model => day.Notes)
                 </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SprintGroup)
-            </th>
-            <th></th>
-        </tr>
+                <th>
+                    @Html.DisplayNameFor(model => day.SprintGroup)
+                </th>
+                <th></th>
+            </tr>
+        }
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentState)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SprintGroup.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.DailySprints)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SprintGroup.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

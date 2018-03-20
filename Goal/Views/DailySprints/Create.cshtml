@@ -1,4 +1,4 @@
-﻿@model Goal.Models.DailySprints
+﻿@model Goal.Models.DailySprintViewModels.CreateDailySprintViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -12,25 +12,26 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="DateCreated" class="control-label"></label>
                 <input asp-for="DateCreated" class="form-control" />
                 <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="DailySprints.CurrentState" class="control-label"></label>
+                <input asp-for="DailySprints.CurrentState" class="form-control" />
+                <span asp-validation-for="DailySprints.CurrentState" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CurrentState" class="control-label"></label>
-                <input asp-for="CurrentState" class="form-control" />
-                <span asp-validation-for="CurrentState" class="text-danger"></span>
+                <label asp-for="DailySprints.Notes" class="control-label"></label>
+                <input asp-for="DailySprints.Notes" class="form-control" />
+                <span asp-validation-for="DailySprints.Notes" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SprintGroupId" class="control-label"></label>
-                <select asp-for="SprintGroupId" class ="form-control" asp-items="ViewBag.SprintGroupId"></select>
-            </div>
+            <input type="hidden" name="GoalsId" value="@Model.SprintGroupId" />
+            @*<div class="form-group">
+            <label asp-for="SprintGroupId" class="control-label"></label>
+            <select asp-for="SprintGroupId" class ="form-control" asp-items="ViewBag.SprintGroupId"></select>
+        </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
