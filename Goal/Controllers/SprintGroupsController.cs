@@ -74,7 +74,7 @@ namespace Goal.Controllers
             }
 
             //if there are no sprint groups for a given Goal ID, redirect to create a new sprint group 
-            EmptyGoalsViewModel emptyGoal = new EmptyGoalsViewModel();
+           EmptyGoalsViewModel emptyGoal = new EmptyGoalsViewModel();
             emptyGoal.GoalsId = goals.Id;
             return View("EmptyGoal", emptyGoal);
 

@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th class="table_headers">
-                File Name
+                Sprint Name
             </th>
             <th class="table_headers">
                 Date Created
@@ -26,9 +26,9 @@
     <tbody>
         @foreach (var item in Model.SprintGroup)
         {
-            <tr data-toggle="collapse" data-target=".@item.Id-accordian" class="accordion-toggle">
+            <tr>
                 <td class="table_data">
-                    @Html.DisplayFor(modelItem => item.Name)
+                    <a class="project_list" asp-controller="DailySprints" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a> 
                 </td>
                 <td class="table_data">
                     @Html.DisplayFor(modelItem => item.DateCreated)
@@ -40,28 +40,6 @@
 
                 </td>
             </tr>
-
-            @foreach (var day in Model.DailySprints)
-            {
-                <tr class="collapse @item.Id-accordian">
-                    @if (day.SprintGroupId == item.Id)
-                    {
-                        <td>
-                            @day.Notes
-                        </td>
-                        <td>
-                            @day.CurrentState
-                        </td>
-                        <td>
-                            @day.DateCreated
-                        </td>
-                        <td>
-                            <a class="btn btn-default " asp-controller="Documents" asp-action="Download" asp-route-id="@day.Id">Download</a>
-                            <a class="btn btn-default" asp-controller="Documents" asp-action="Delete" asp-route-id="@day.Id">Delete</a>
-                        </td>
-                    }
-                </tr>
-            }
         }
     </tbody>
 </table>

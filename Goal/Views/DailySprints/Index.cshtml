@@ -7,7 +7,7 @@
 <h2>@Model.SprintGroup.Name</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+   <a class="btn btn-default" asp-controller="DailySprints" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Daily Journal</a>
 </p>
 <table class="table">
     <thead>

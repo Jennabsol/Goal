@@ -30,8 +30,10 @@ namespace Goal.Controllers
         public async Task<IActionResult> Index(int id)
         {
 
-            ListDailySprintViewModel viewModel = new ListDailySprintViewModel();
+            //creates new instance of the daily sprint list 
 
+            ListDailySprintViewModel viewModel = new ListDailySprintViewModel();
+            //grabs each daily sprint  for a given sprint group
             var dailySprint = await (
                from d in _context.DailySprints
                from sg in _context.SprintGroup
@@ -114,7 +116,7 @@ namespace Goal.Controllers
                 _context.Add(viewModel.DailySprints);
                 await _context.SaveChangesAsync();
 
-
+                //grabs each document group for a given project id
                 var goalSprintGroup = await (
                     from gsg in _context.GoalSprintGroup
                     where gsg.SprintGroupId == viewModel.SprintGroupId
@@ -123,8 +125,8 @@ namespace Goal.Controllers
 
 
                 var gs = goalSprintGroup.First();
-
-                return RedirectToAction("Index", "SprintGroups", new { id = gs.SprintGroupId });
+                //return RedirectToAction("Index", "SprintGroups");
+                return RedirectToAction("Index", "DailySprints", new { id = gs.SprintGroupId });
             }
             ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name", viewModel.DailySprints.SprintGroupId);
             return View(viewModel);
