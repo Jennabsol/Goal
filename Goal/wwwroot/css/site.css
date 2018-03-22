@@ -1,14 +1,14 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Carousel */
 .carousel-caption p {
@@ -147,103 +147,20 @@
     }
 }
 
-/*================================================
 
-             3 HEADER AREA
-
-==================================================*/
-
-
-
-.custom-navbar {
-    border-width: 0;
-    background: transparent;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
+#homepageBG {
+    background-image: url('~/images/daniel-olahh.jpg');
 }
 
-.logo a {
-    color: #fff;
-    display: inline-block;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-top: 21px;
-    text-transform: uppercase;
-    -webkit-transition: all 0.4s ease-in-out 0s;
-    transition: all 0.4s ease-in-out 0s;
-    line-height: 40px;
+/*.navbar {
+    padding: .5rem 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+}*/
+
+.card-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
 }
-
-    .logo a:focus {
-        text-decoration: none;
-    }
-
-.main-menu {
-    text-transform: uppercase;
-}
-
-    .main-menu ul.navbar-nav {
-        float: right;
-    }
-
-    .main-menu ul.nav.navbar-nav li.active {
-        position: relative;
-    }
-
-        .main-menu ul.nav.navbar-nav li.active a {
-        }
-
-
-
-    .main-menu ul.navbar-nav li a {
-        color: #fff;
-        font-weight: 500;
-        font-size: 12px;
-        padding: 30px 13px;
-        -webkit-transition: all 0.4s ease-in-out;
-        transition: all 0.4s ease-in-out;
-        position: relative;
-    }
-
-        .main-menu ul.navbar-nav li a:focus {
-            background: none;
-        }
-
-    .main-menu ul li:hover a {
-        color: #f9f9f9;
-        background: none;
-    }
-
-.custom-navbar.top-nav-collapse .logo a {
-    margin-top: 13px;
-}
-
-.custom-navbar.top-nav-collapse .main-menu ul.navbar-nav li a {
-    color: #444;
-    padding: 22px 13px;
-}
-
-.custom-navbar.top-nav-collapse .main-menu ul.nav.navbar-nav li.active a {
-}
-
-
-
-.logo a span {
-    display: inline-block;
-    font-size: 28px;
-    padding: 9px 5px 8px 7px;
-}
-
-.custom-navbar.top-nav-collapse {
-    background: #fff;
-    box-shadow: 0 0 10px #222;
-    border-width: 0;
-}
-
-    .custom-navbar.top-nav-collapse .main-menu ul.navbar-nav li.active a:after {
-        opacity: 1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    }
-
-

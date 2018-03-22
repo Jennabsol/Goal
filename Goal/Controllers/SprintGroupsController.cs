@@ -39,7 +39,7 @@ namespace Goal.Controllers
                 .ToListAsync();
 
             //grabs an instance of the goal
-            var goals = await _context.Goals.SingleAsync(g => g.Id == id);
+            var goals = await _context.Goals.SingleOrDefaultAsync(g => g.Id == id);
 
             //creates a new list of DailySprints 
             List<DailySprints> dailySprints = new List<DailySprints>();

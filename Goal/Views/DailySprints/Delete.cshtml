@@ -12,33 +12,33 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
+            @Html.DisplayNameFor(model => model.DailySprints.DateCreated)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DateCreated)
+            @Html.DisplayFor(model => model.DailySprints.DateCreated)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CurrentState)
+            @Html.DisplayNameFor(model => model.DailySprints.CurrentState)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CurrentState)
+            @Html.DisplayFor(model => model.DailySprints.CurrentState)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Notes)
+            @Html.DisplayNameFor(model => model.DailySprints.Notes)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Notes)
+            @Html.DisplayFor(model => model.DailySprints.Notes)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.SprintGroup)
+            @Html.DisplayNameFor(model => model.DailySprints.SprintGroup)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.SprintGroup.Name)
+            @Html.DisplayFor(model => model.DailySprints.SprintGroup.Name)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="SprintGroupId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>

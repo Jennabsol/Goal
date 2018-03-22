@@ -11,20 +11,19 @@
 </p>
 <table class="table">
     <thead>
-        @foreach (var day in Model.DailySprints)
-        {
+       
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => day.DateCreated)
+                   DateCreated
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => day.CurrentState)
+                  CurrentState
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => day.Notes)
+                   Notes
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => day.SprintGroup)
+                    SprintName
                 </th>
                 <th></th>
             </tr>

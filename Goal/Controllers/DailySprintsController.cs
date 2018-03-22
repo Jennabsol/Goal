@@ -162,7 +162,7 @@ namespace Goal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateCreated,CurrentState,Notes,SprintGroupId")] DailySprints dailySprints)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DateCreated,CurrentState,Notes,SprintGroupId")] DailySprints dailySprints, int SprintGroupId)
         {
             if (id != dailySprints.Id)
             {
@@ -187,10 +187,11 @@ namespace Goal.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "DailySprints", new { id = SprintGroupId });
+                //return RedirectToAction(nameof(Index));
             }
-            ViewData["SprintGroupId"] = new SelectList(_context.SprintGroup, "Id", "Name", dailySprints.SprintGroupId);
-            return View(dailySprints);
+
+            return RedirectToAction("Index", "DailySprints", new { id = SprintGroupId });
         }
 
         // GET: DailySprints/Delete/5
@@ -242,7 +243,7 @@ namespace Goal.Controllers
 
             
 
-            return RedirectToAction("Index", "SprintGroups", new { id = SprintGroupId });
+            return RedirectToAction("Index", "DailySprints", new { id = SprintGroupId });
             //return RedirectToAction(nameof(Index));
         }
 

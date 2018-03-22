@@ -1,44 +1,68 @@
 ﻿@model IEnumerable<Goal.Models.Goals>
 
-@{
-    ViewData["Title"] = "Index";
-}
-<h2 class="text-center page_header"> Goals</h2>
-<p class="text-center page_info projects_info"></p>
+@{ ViewData["Title"] = "Index"; }
 
+<div class="wrapper">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th class="table_headers">
-                Name of Project
-            </th>
-            <th class="table_headers">
-                Date Created
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="table_data">
-                    <a class="project_list" asp-controller="SprintGroups" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
-                </td>
-                <td class="table_data">
-                    @Html.DisplayFor(modelItem => item.DateCreated)
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-lg btn-default">Remove Goal</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="panel-header">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="motto text-center">
 
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">.goals</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Date Created
+                                                </th>
 
-<p class="text-center page_info projects_info projects_add_new">Adding a new goal is easy! Just click this button.</p>
-<p class="text-center">
-    <a asp-action="Create" class="btn btn-lg btn-default">Create New Goal</a>
-</p>
+                                                <th class="text-right"></th>
+
+                                            </tr>
+                                      </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <a class="btn btn-link btn-warning" asp-controller="SprintGroups" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.DateCreated)
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                                                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center page_info projects_info projects_add_new">Adding a new goal is easy! Just click this button.</p>
+            <p class="text-center">
+                <a asp-action="Create" class="btn btn-outline-primary btn-round">Create New Goal</a>
+            </p>
+        </div>
+    </div>
+</div>
+
