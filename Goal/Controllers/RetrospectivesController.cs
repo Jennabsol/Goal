@@ -194,7 +194,7 @@ namespace Goal.Controllers
             viewModel.Retrospective = retrospective;
             viewModel.SprintGroupId = gs.SprintGroupId;
 
-            return View(retrospective);
+            return View(viewModel);
         }
 
         // POST: Retrospectives/Delete/5

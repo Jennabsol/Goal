@@ -36,7 +36,9 @@
 
                 <td class="table_data">
                     <a class="btn btn-default" asp-controller="DailySprints" asp-action="Create" asp-route-id="@item.Id">Add Daily Journal</a>
+                    <a class="btn btn-default" asp-controller="Retrospectives" asp-action="Index" asp-route-id="@item.Id">View Retrospective</a>
                     <a class="btn btn-default" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
 
                 </td>
             </tr>
