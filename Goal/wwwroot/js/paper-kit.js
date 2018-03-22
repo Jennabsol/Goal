@@ -198,12 +198,12 @@ pk = {
 
                 if($(this).hasClass('state-open')){
                     $(thisdiv).css({
-                        'height':'0px',
+                        'height':'0px'
                     });
                     $(this).removeClass('state-open');
                 } else {
                     $(thisdiv).css({
-                        'height':height + 30,
+                        'height':height + 30
                     });
                     $(this).addClass('state-open');
                 }
@@ -232,7 +232,7 @@ pk = {
             	}
             });
         }
-    },
+    }
 
 }
 
@@ -242,7 +242,7 @@ examples = {
         var mapOptions = {
           zoom: 14,
           center: myLatlng,
-          scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+          scrollwheel: false //we disable de scroll over the map, it is a really annoing when you scroll through page
         }
         var map = new google.maps.Map(document.getElementById("contactUsMap"), mapOptions);
 
