@@ -1,0 +1,48 @@
+﻿@model Goal.Models.Retrospective
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Retrospective</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Success)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Success)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Challenges)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Challenges)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndState)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndState)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SprintGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SprintGroup.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index" asp-route-id="@Model.SprintGroupId">Back to List</a>
+</div>
