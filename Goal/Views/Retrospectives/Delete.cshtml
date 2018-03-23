@@ -4,48 +4,57 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Retrospective</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Retrospective.DateCreated)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Retrospective.DateCreated)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Retrospective.Success)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Retrospective.Success)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Retrospective.Challenges)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Retrospective.Challenges)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Retrospective.EndState)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Retrospective.EndState)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Retrospective.SprintGroup)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Retrospective.SprintGroup.Name)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="SprintGroupId"/>
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index" asp-route-id="@Model.SprintGroupId">Back to List</a>
-    </form>
+<div class="wrapper">
+    <div class="page-header topCenter" style="background-image: url('/images/annie-spratt-256177-unsplash.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 ml-auto mr-auto">
+                    <div class="card  marginTop card-register">
+                        <h3 class="title">Delete?</h3>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Retrospective.DateCreated)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Retrospective.DateCreated)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Retrospective.Success)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Retrospective.Success)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Retrospective.Challenges)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Retrospective.Challenges)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Retrospective.EndState)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Retrospective.EndState)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Retrospective.SprintGroup)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Retrospective.SprintGroup.Name)
+                            </dd>
+                        </dl>
+                        <div class="forgot">
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-for="SprintGroupId" />
+                                <input type="submit" value="Delete" class="btn btn-default" />
+                                <br/>
+                                <a asp-action="Index" asp-route-id="@Model.SprintGroupId">Back to List</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

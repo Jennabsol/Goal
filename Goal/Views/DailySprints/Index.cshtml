@@ -4,55 +4,73 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>@Model.SprintGroup.Name</h2>
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('/images/daiga-ellaby-154935-unsplash.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">@Model.SprintGroup.Name</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>
+                                                DateCreated
+                                            </th>
+                                            <th>
+                                                CurrentState
+                                            </th>
+                                            <th>
+                                                Notes
+                                            </th>
+                                            <th>
+                                                SprintName
+                                            </th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                        
+                                    </thead>
 
-<p>
-    <a class="btn btn-default" asp-controller="DailySprints" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Daily Journal</a>
-    <a class="btn btn-default" asp-controller="Retrospectives" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Retrospective</a>
-</p>
-<table class="table">
-    <thead>
-       
-            <tr>
-                <th>
-                   DateCreated
-                </th>
-                <th>
-                  CurrentState
-                </th>
-                <th>
-                   Notes
-                </th>
-                <th>
-                    SprintName
-                </th>
-                <th></th>
-            </tr>
-        }
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model.DailySprints)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateCreated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CurrentState)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Notes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SprintGroup.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                                    <tbody>
+                                        @foreach (var item in Model.DailySprints)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DateCreated)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CurrentState)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Notes)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.SprintGroup.Name)
+                                                </td>
+                                                <td class="text-right">
+                                                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-info"></i></a>
+                                                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <p class="text-center">
+                                    <a class="btn btn-link btn-success" asp-controller="DailySprints" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Daily Journal</a>
+                                    <a class="btn btn-link btn-danger" asp-controller="Retrospectives" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Retrospective</a>
+                                    <a asp-controller="SprintGroups" asp-action="Index" asp-route-id="@Model.SprintGroup.Id" class="btn btn-outline-info btn-round">Back To Sprint List</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

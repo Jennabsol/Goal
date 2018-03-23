@@ -4,57 +4,83 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('/images/rawpixel-com-568385-unsplash.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">@Model.SprintGroup.Name</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>
+                                                DateCreated
+                                            </th>
+                                            <th>
+                                                Success
+                                            </th>
+                                            <th>
+                                                Challenges
+                                            </th>
+                                            <th>
+                                                EndState
+                                            </th>
+                                            <th>
+                                                Sprint Name
+                                            </th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Retrospective)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DateCreated)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Success)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Challenges)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.EndState)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.SprintGroup.Name)
+                                                </td>
+                                                <td class="text-right">
+                                                    <a asp-action="Edit" asp-route-id="@item.Id">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+                                                    <a asp-action="Details" asp-route-id="@item.Id">
+                                                        <i class="fa fa-info"></i>
+                                                    </a>
+                                                    <a asp-action="Delete" asp-route-id="@item.Id">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <p class="text-center">
+                                    <a class="btn btn-link btn-danger" asp-controller="Retrospectives" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Retrospective</a>
+                                    <a asp-controller="DailySprints" asp-action="Index" asp-route-id="@Model.SprintGroup.Id" class="btn btn-outline-info btn-round">Back To Sprint List</a>
+                                </p>
 
-<p>
-    <a class="btn btn-default" asp-controller="Retrospectives" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Retrospective</a>
-    <a asp-controller="DailySprints" asp-action="Index" asp-route-id="@Model.SprintGroup.Id" class="btn btn-default">Back To Goal List</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    DateCreated
-                </th>
-                <th>
-                    Success
-                </th>
-                <th>
-                    Challenges
-                </th>
-                <th>
-                    EndState 
-                </th>
-            <th>
-               Sprint Name
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Retrospective) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Success)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Challenges)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndState)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SprintGroup.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -164,11 +164,16 @@
     align-items: flex-start;
 }
 
+.ml-card {
+    margin-left: auto !important;
+}
+.mr-card {
+    margin-right: auto !important;
+}
 
-    
 
 .marginTop {
-margin-top: 70px;
+    margin-top: 70px;
 }
 
 .card-register .title {
@@ -176,7 +181,7 @@ margin-top: 70px;
 }
 
 .page-header-forms {
-    background-color: transparent;
+    
     background-position: center center;
     background-size: cover;
     min-height: 100vh;
@@ -189,4 +194,16 @@ margin-top: 70px;
     align-items: flex-start;
     justify-content: center;
     margin-top: 68px;
+}
+
+
+
+.card.card-plain {
+    background-color: white;
+    border-radius: 30px;
+    
+}
+
+.card-header:first-child {
+    border-radius: 30px; 
 }

@@ -4,45 +4,64 @@
     ViewData["Title"] = "Index";
 }
 
-<h2 class="text-center page_header">@Model.Goal.Name</h2>
-<p class="text-center page_info projects_info">sprints </p>
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('/images/rawpixel-com-597446-unsplash.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"> @Model.Goal.Name</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th class="table_headers">
+                                                Sprint Name
+                                            </th>
+                                            <th class="table_headers">
+                                                Date Created
+                                            </th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.SprintGroup)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a class="btn btn-link btn-warning" asp-controller="DailySprints" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DateCreated)
+                                                </td>
 
-<p class="text-center">
-    <a asp-action="Create" asp-route-id="@Model.Goal.Id" class="btn btn-default">Add</a>
-    <a asp-controller="Goals" asp-action="Index" class="btn btn-default">Back To Goal List</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th class="table_headers">
-                Sprint Name
-            </th>
-            <th class="table_headers">
-                Date Created
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.SprintGroup)
-        {
-            <tr>
-                <td class="table_data">
-                    <a class="project_list" asp-controller="DailySprints" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a> 
-                </td>
-                <td class="table_data">
-                    @Html.DisplayFor(modelItem => item.DateCreated)
-                </td>
-
-                <td class="table_data">
-                    <a class="btn btn-default" asp-controller="DailySprints" asp-action="Create" asp-route-id="@item.Id">Add Daily Journal</a>
-                    <a class="btn btn-default" asp-controller="Retrospectives" asp-action="Index" asp-route-id="@item.Id">View Retrospective</a>
-                    <a class="btn btn-default" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                                <td class="text-right">
+                                                    <a class="btn btn-link btn-success" asp-controller="DailySprints" asp-action="Create" asp-route-id="@item.Id">Add Daily Journal</a>
+                                                    <a class="btn btn-link btn-danger" asp-controller="Retrospectives" asp-action="Index" asp-route-id="@item.Id">View Retrospective</a>
+                                                    <a asp-action="Delete" asp-route-id="@item.Id">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
 
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
 
+                                <p class="text-center">
+                                    <a asp-action="Create" asp-route-id="@Model.Goal.Id" class="btn btn-link btn-warning">Add Sprint</a>
+                                    <a asp-controller="Goals" asp-action="Index" class="btn btn-outline-info btn-round">Back To Goal List</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

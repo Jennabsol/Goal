@@ -4,49 +4,54 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<div class="wrapper">
+    <div class="page-header topCenter" style="background-image: url('/images/sidney-pearce-502947-unsplash.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 ml-auto mr-auto">
+                    <div class="card logReg marginTop card-register">
+                        <h3 class="title">Create A Retrospective!</h3>
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            @*<input type="hidden" name="DateCreated" value="@Model.Retrospective.DateCreated" />*@
+                            @*<div class="form-group">
+                                    <label asp-for="DateCreated" class="control-label"></label>
+                                    <input asp-for="DateCreated" class="form-control" />
+                                    <span asp-validation-for="DateCreated" class="text-danger"></span>
+                                </div>*@
+                            <div class="form-group">
+                                <label asp-for="Retrospective.Success" class="control-label"></label>
+                                <input asp-for="Retrospective.Success" class="form-control" />
+                                <span asp-validation-for="Retrospective.Success" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Retrospective.Challenges" class="control-label"></label>
+                                <input asp-for="Retrospective.Challenges" class="form-control" />
+                                <span asp-validation-for="Retrospective.Challenges" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Retrospective.EndState" class="control-label"></label>
+                                <input asp-for="Retrospective.EndState" class="form-control" />
+                                <span asp-validation-for="Retrospective.EndState" class="text-danger"></span>
+                            </div>
+                            <input type="hidden" name="SprintGroupId" value="@Model.SprintGroupId" />
+                            @*<div class="form-group">
+                                    <label asp-for="SprintGroupId" class="control-label"></label>
+                                    <select asp-for="SprintGroupId" class ="form-control" asp-items="ViewBag.SprintGroupId"></select>
+                                </div>*@
+                            <div class="form-group">
 
-<h4>Retrospective</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<input type="hidden" name="DateCreated" value="@Model.Retrospective.DateCreated" />*@
-            @*<div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="Retrospective.Success" class="control-label"></label>
-                <input asp-for="Retrospective.Success" class="form-control" />
-                <span asp-validation-for="Retrospective.Success" class="text-danger"></span>
+                                <input type="submit" value="Create" class="btn btn-primary btn-block btn-round" />
+                        </form>
+                        <div class="forgot">
+                            <a asp-action="Index" asp-route-id="@Model.SprintGroupId">Back to List</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Retrospective.Challenges" class="control-label"></label>
-                <input asp-for="Retrospective.Challenges" class="form-control" />
-                <span asp-validation-for="Retrospective.Challenges" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Retrospective.EndState" class="control-label"></label>
-                <input asp-for="Retrospective.EndState" class="form-control" />
-                <span asp-validation-for="Retrospective.EndState" class="text-danger"></span>
-            </div>
-            <input type="hidden" name="SprintGroupId" value="@Model.SprintGroupId" />
-            @*<div class="form-group">
-            <label asp-for="SprintGroupId" class="control-label"></label>
-            <select asp-for="SprintGroupId" class ="form-control" asp-items="ViewBag.SprintGroupId"></select>
-        </div>*@
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" asp-route-id="@Model.SprintGroupId">Back to List</a>
 </div>
 
 @section Scripts {
