@@ -3,13 +3,24 @@
     ViewData["Title"] = "EmptyGoal";
 }
 
-<h2>EmptyGoal</h2>
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('/images/diego-ph-412522-unsplash.jpg')">
 
-<h2 class="text-center page_header"></h2>
 
-<p class="text-center page_info projects_info">Goal has not started!</p>
-<p class="text-center page_info projects_info">Click the button below to add a sprint! </p>
-<p class="text-center">
-    <a class="btn btn-lg btn-default" asp-action="Create" asp-route-id="@Model.GoalsId">Start a Sprint</a>
-    <a class="btn btn-lg btn-default" asp-controller="Goals" asp-action="Index">Back To Goals</a>
-</p>
+        <div class="filter">
+            <div class="container">
+                <div class="motto text-center">
+
+                    <h2>Goal has not started!</h2>
+                    <h4>Click the button below to add a sprint! </h4>
+
+                    <br />
+                    <p class="text-center">
+                        <a class="btn btn-outline-neutral btn-round" asp-action="Create" asp-route-id="@Model.GoalsId">Start a Sprint</a>
+                        <a class="btn btn-link btn-primary" asp-controller="Goals" asp-action="Index">Back To Goals</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
