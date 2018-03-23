@@ -1,14 +1,10 @@
-﻿/*body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}*/
+﻿
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-/*.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}*/
+.body-content {
+    max-height: 100%;
+}
 
 /* Carousel */
 .carousel-caption p {
@@ -145,9 +141,7 @@
 }
 
 
-#homepageBG {
-    background-image: url('~/images/daniel-olahh.jpg');
-}
+
 
 /*.navbar {
     padding: .5rem 1rem !important;
@@ -164,4 +158,35 @@
 
 .logReg {
     background-color: transparent;
+}
+
+.topCenter {
+    align-items: flex-start;
+}
+
+
+    
+
+.marginTop {
+margin-top: 70px;
+}
+
+.card-register .title {
+    color: #ffc107;
+}
+
+.page-header-forms {
+    background-color: transparent;
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    max-height: 999px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 68px;
 }

@@ -8,6 +8,7 @@
 
 <p>
     <a class="btn btn-default" asp-controller="Retrospectives" asp-action="Create" asp-route-id="@Model.SprintGroup.Id">Add Retrospective</a>
+    <a asp-controller="DailySprints" asp-action="Index" asp-route-id="@Model.SprintGroup.Id" class="btn btn-default">Back To Goal List</a>
 </p>
 <table class="table">
     <thead>

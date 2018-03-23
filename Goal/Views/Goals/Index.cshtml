@@ -3,65 +3,62 @@
 @{ ViewData["Title"] = "Index"; }
 
 <div class="wrapper">
-
-    <div class="panel-header">
-        <div class="filter"></div>
+    <div class="page-header-forms">
+        @*<div class="filter"></div>*@
         <div class="container">
-            <div class="motto text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-plain">
+                        <div class="card-header">
+                            <h4 class="card-title"> Goal</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <tr>
 
-            </div>
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="card-header">
-                                <h4 class="card-title">.goals</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="text-primary">
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                DateCreated
+                                            </th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
                                             <tr>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Date Created
-                                                </th>
+                                                <td>
+                                                    <a class="btn btn-link btn-warning" asp-controller="SprintGroups" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DateCreated)
+                                                </td>
 
-                                                <th class="text-right"></th>
-
+                                                <td class="text-right">
+                                                    <a asp-action="Edit" asp-route-id="@item.Id">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+                                                    <a asp-action="Delete" asp-route-id="@item.Id">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        <a class="btn btn-link btn-warning" asp-controller="SprintGroups" asp-action="index" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.DateCreated)
-                                                    </td>
-
-                                                    <td class="text-right">
-                                                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
-                                                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="text-center page_info projects_info projects_add_new">Adding a new goal is easy! Just click this button.</p>
-            <p class="text-center">
-                <a asp-action="Create" class="btn btn-outline-primary btn-round">Create New Goal</a>
-            </p>
+        <p class="text-center page_info projects_info projects_add_new">Adding a new goal is easy! Just click this button.</p>
+        <p class="text-center">
+            <a asp-action="Create" class="btn btn-outline-primary btn-round">Create New Goal</a>
+        </p>
         </div>
     </div>
 </div>
